@@ -3,11 +3,12 @@ package tnesprit.se1.spring1.Entities;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class Reservation {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private String idReservation;
     @Temporal(TemporalType.DATE)
     private Date anneeUniversitaire;
@@ -45,4 +46,7 @@ public class Reservation {
     public void setEstValide(boolean estValide) {
         this.estValide = estValide;
     }
+
+    @ManyToMany(mappedBy="reservations", cascade = CascadeType.ALL)
+    private Set<Etudiant> etudiants;
 }

@@ -1,7 +1,8 @@
 package tnesprit.se1.spring1.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 public class Bloc {
@@ -42,4 +43,9 @@ public class Bloc {
     public void setCapciteBloc(long capciteBloc) {
         this.capciteBloc = capciteBloc;
     }
+
+    @ManyToOne
+    private  Foyer foyer;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="bloc")
+    private Set<Chambre> chambres;
 }

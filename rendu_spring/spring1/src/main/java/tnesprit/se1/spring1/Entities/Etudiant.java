@@ -3,6 +3,7 @@ package tnesprit.se1.spring1.Entities;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class Etudiant {
@@ -78,4 +79,6 @@ public class Etudiant {
     public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Reservation> reservations;
 }

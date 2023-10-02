@@ -1,7 +1,8 @@
 package tnesprit.se1.spring1.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 public class Foyer {
@@ -10,6 +11,7 @@ public class Foyer {
     private String nomFoyer;
     private long capaciteFoyer;
 
+
     public Foyer() {
     }
 
@@ -17,6 +19,7 @@ public class Foyer {
         this.idFoyer = idFoyer;
         this.nomFoyer = nomFoyer;
         this.capaciteFoyer = capaciteFoyer;
+
     }
 
     public long getIdFoyer() {
@@ -43,4 +46,8 @@ public class Foyer {
         this.capaciteFoyer = capaciteFoyer;
     }
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="foyer")
+    private Set<Bloc> blocs;
+    @OneToOne
+    private Universit universit;
 }

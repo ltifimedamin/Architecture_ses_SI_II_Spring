@@ -2,6 +2,8 @@ package tnesprit.se1.spring1.Entities;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class Chambre {
     @Id
@@ -43,4 +45,12 @@ public class Chambre {
     public void setTypeCh(TypeChambre typeCh) {
         this.typeCh = typeCh;
     }
+
+    @Enumerated(EnumType.STRING)
+    private TypeChambre typeChambre;
+    @ManyToOne
+    private Bloc bloc;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Reservation> reservations;
+
 }
