@@ -19,22 +19,23 @@ public class UniversitService implements IUniverstService{
     }
 
     @Override
-    public Universit addBloc(Universit u) {
+    public Universit addUniversit(Universit u) {
         return universitRepository.save(u);
     }
 
     @Override
-    public Universit updateBloc(Universit u) {
+    public Universit updateUniversit(Universit u) {
         return universitRepository.save(u);
     }
 
     @Override
-    public Universit retrieveBloc(Long idUniversit) {
+    public Universit retrieveUniversit(Long idUniversit) {
         return universitRepository.findById(idUniversit).get();
     }
 
     @Override
-    public void removeUniversit(Long idUniversit) {
+    public Universit removeUniversit(Long idUniversit) {
     universitRepository.deleteById(idUniversit);
+        return null;
     }
 }

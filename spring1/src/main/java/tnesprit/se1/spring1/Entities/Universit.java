@@ -24,6 +24,10 @@ public class Universit {
         this.foyer = foyer;
     }
 
+    public Universit() {
+
+    }
+
     public long getIdUniversite() {
         return idUniversite;
     }

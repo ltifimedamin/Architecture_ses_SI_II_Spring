@@ -44,8 +44,9 @@ public class Bloc {
         this.capciteBloc = capciteBloc;
     }
 
-    @ManyToOne
-    private  Foyer foyer;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Foyer foyer;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy="bloc")
     private Set<Chambre> chambres;
 }

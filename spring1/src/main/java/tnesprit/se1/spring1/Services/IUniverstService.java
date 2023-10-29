@@ -7,12 +7,12 @@ import java.util.List;
 public interface IUniverstService {
     List<Universit> retrieveAllUniversits();
 
-    Universit addBloc(Universit u);
+    Universit addUniversit(Universit u);
 
-    Universit updateBloc(Universit u);
+    Universit updateUniversit(Universit u);
 
-    Universit retrieveBloc(Long idUniversit);
+    Universit retrieveUniversit(Long idUniversit);
 
-    void removeUniversit(Long idUniversit);
+    Universit removeUniversit(Long idUniversit);
 
 }
