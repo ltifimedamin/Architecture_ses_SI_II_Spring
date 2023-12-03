@@ -1,5 +1,6 @@
 package tnesprit.se1.spring1.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -48,6 +49,8 @@ public class Foyer {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="foyer")
     private Set<Bloc> blocs;
-    @OneToOne
+
+    @OneToOne(mappedBy = "foyer")
+    @JsonIgnore
     private Universit universit;
 }

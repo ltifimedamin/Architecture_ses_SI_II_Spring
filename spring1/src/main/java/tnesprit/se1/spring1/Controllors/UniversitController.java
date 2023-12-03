@@ -7,6 +7,7 @@ import tnesprit.se1.spring1.Entities.Universit;
 import tnesprit.se1.spring1.Services.IUniverstService;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @AllArgsConstructor
@@ -28,6 +29,7 @@ public class UniversitController {
     @PostMapping("/addUniversit")
     public Universit addUniversit(@RequestBody Universit u) {
         Universit universit = iUniverstService.addUniversit(u);
+        Logger.getLogger("amin").warning("amin ok");
         return universit;
     }
 
@@ -39,6 +41,13 @@ public class UniversitController {
     @PutMapping("/UpdateUniversit")
     public Universit updateUniversit(@RequestBody Universit f) {
         Universit universit= iUniverstService.updateUniversit(f);
+        return universit;
+    }
+    @PostMapping("/affecterFoyerAUniversite/{idFoyer}/{nomUniversite}")
+    public Universit affecterFoyerAUniversite(@PathVariable ("idFoyer") Long idFoyer,
+                                              @PathVariable ("nomUniversite") String nomUniversite) {
+        Universit universit = iUniverstService.affecterFoyerAUniversite(idFoyer,nomUniversite);
+    //Logger.getLogger("amin").warning(universit.getFoyer().getIdFoyer()+"");
         return universit;
     }
 }

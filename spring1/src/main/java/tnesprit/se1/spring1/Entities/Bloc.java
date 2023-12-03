@@ -47,6 +47,7 @@ public class Bloc {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Foyer foyer;
 
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy="bloc")
     private Set<Chambre> chambres;
 }
