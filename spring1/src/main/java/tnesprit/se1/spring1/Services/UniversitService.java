@@ -3,7 +3,9 @@ package tnesprit.se1.spring1.Services;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import tnesprit.se1.spring1.Entities.Foyer;
 import tnesprit.se1.spring1.Entities.Universit;
+import tnesprit.se1.spring1.Repository.FoyerRepository;
 import tnesprit.se1.spring1.Repository.UniversitRepository;
 
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class UniversitService implements IUniverstService{
     UniversitRepository universitRepository;
+    FoyerRepository foyerRepository;
     @Override
     public List<Universit> retrieveAllUniversits() {
         return universitRepository.findAll();
@@ -37,5 +40,12 @@ public class UniversitService implements IUniverstService{
     public Universit removeUniversit(Long idUniversit) {
     universitRepository.deleteById(idUniversit);
         return null;
+    }
+    @Override
+    public Universit affecterFoyerAUniversite(long idFoyer, String nomUniversite) {
+        Universit universit=universitRepository.findByNom(nomUniversite).get(0);
+        Foyer foyer=foyerRepository.findById(idFoyer).get();
+        universit.setFoyer(foyer);
+        return universitRepository.save(universit);
     }
 }

@@ -1,11 +1,15 @@
 package tnesprit.se1.spring1.Entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 import java.util.Set;
 
 @Entity
+@Setter
+@Getter
 public class Etudiant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,53 +36,7 @@ public class Etudiant {
         this.dateNaissance = dateNaissance;
     }
 
-    public long getIdEtudiant() {
-        return idEtudiant;
-    }
 
-    public String getNomEt() {
-        return nomEt;
-    }
-
-    public String getPrenomEt() {
-        return prenomEt;
-    }
-
-    public long getCin() {
-        return cin;
-    }
-
-    public String getEcole() {
-        return ecole;
-    }
-
-    public Date getDateNaissance() {
-        return dateNaissance;
-    }
-
-    public void setIdEtudiant(long idEtudiant) {
-        this.idEtudiant = idEtudiant;
-    }
-
-    public void setNomEt(String nomEt) {
-        this.nomEt = nomEt;
-    }
-
-    public void setPrenomEt(String prenomEt) {
-        this.prenomEt = prenomEt;
-    }
-
-    public void setCin(long cin) {
-        this.cin = cin;
-    }
-
-    public void setEcole(String ecole) {
-        this.ecole = ecole;
-    }
-
-    public void setDateNaissance(Date dateNaissance) {
-        this.dateNaissance = dateNaissance;
-    }
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Reservation> reservations;
 }
